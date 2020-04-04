@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-	<div class="content">
+	<div id="content">
 		<div class="container">
 		<?php 
 
@@ -14,19 +14,15 @@
 				<div class="col-md-1">
 					<div class="menu-function">
 						<a href="#" class="active">
-							<i class="ion-fireball"></i>
 							<p class="title-icon">Nong</p>
 						</a>
 						<a href="#" class="active">
-							<i class="ion-images"></i>
 							<p class="title-icon">Nong</p>
 						</a>
 						<a href="#" class="active">
-							<i class="ion-ios-pulse-strong"></i>
 							<p class="title-icon">Nong</p>
 						</a>
 						<a href="#" class="active">
-							<i class="ion-videocamera"></i>
 							<p class="title-icon">Nong</p>
 						</a>
 
@@ -34,8 +30,9 @@
 					</div>
 						
 				</div> <!-- end #menu-function -->
-				<div class="col-md-7 main-content">
-					<div class="other-news">
+				<div class="col-md-7">
+					<div class=" main-content">
+							<div class="other-news">
 						<h1 class="category-title">Category: <?php single_cat_title(); ?></h1>
 							<div class="content-news">
 								<!-- Get post mặt định -->
@@ -60,10 +57,15 @@
 						
 
 					</div> <!-- end other news -->
+					</div>
+				
 
 				</div> <!-- end #main-content -->
-				<div class="col-md-4 main-sidebar">
-					<?php get_sidebar(); ?>
+				<div class="col-md-4">
+					<div class=" main-sidebar">
+						<?php get_sidebar(); ?>
+					</div>
+					
 						
 					
 				</div> <!-- end #main-sidebar -->

@@ -38,24 +38,35 @@
 </div> end header-wrapper -->
 
 	<header>
-		<div class="main-header">
+		<nav class="navbar navbar-default" id="navbar-custom-header">
+
 			<div class="container">
-				<form method="get" accept="<?php bloginfo('url'); ?>/" class="navbar-form navbar-right" role="search" style="display: none;" >
-					<div class="form-group">
-						<input type="text" name="s" class="form-control" placeholder="Search">
-					</div>
-					<button type="submit" class="btn btn-default"><i class="ion-search"></i></button>
-				</form>
-				<div class="menu-header">
-					<?php wp_nav_menu( 
-						array( 
-							'theme_location' => 'topmenu', 
-							'container' => 'false', 
-							'menu_id' => '', 
-							'menu_class' => ''
-						) 
-						); ?>
-				</div>
+				<ul class="navbar-left contact-header">
+					<li><a href="mailto:nvtrong.hanu@gmail.com"><i class="ion-android-mail"></i></a></li>
+					<li><a href="https://www.facebook.com/nvtrongggg"><i class="ion-social-facebook"></i></a></li>
+				</ul>
+				<form method="get" action="<?php bloginfo('url'); ?>/" class="navbar-form navbar-right">
+			        <div class="form-group">
+			          <input type="text" class="form-control" placeholder="Search" name="s">
+			        </div>
+			        <button type="submit" class="btn btn-default"><i class="ion-search"></i></button>
+			      </form>
 			</div>
-		</div>
+			
+		</nav>
+		<nav class="navbar navbar-default navbar-fixed-bottom" id="navbar-custom-footer">
+				  <div class="container">
+					<div class="menu-header">
+						<?php wp_nav_menu( 
+							array( 
+								'theme_location' => 'topmenu', 
+								'container' => 'false', 
+								'menu_id' => '', 
+								'menu_class' => ''
+							) 
+							); ?>
+					</div>
+				  </div>
+				</nav>
+
 	</header>

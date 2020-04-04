@@ -49,7 +49,22 @@ add_action('rest_api_init', function()
         'methods' => 'GET',
         'callback' => 'get_login'
     ));
-    
+
+    register_rest_route('thailan', '/get_huyen/', array(
+        'methods' => 'GET',
+        'callback' => 'get_huyen'
+    ));
+
+    register_rest_route('thailan', '/get_xa/', array(
+        'methods' => 'GET',
+        'callback' => 'get_xa'
+    ));
+
+    register_rest_route('thailan', '/get_zipcode/', array(
+        'methods' => 'GET',
+        'callback' => 'get_zipcode'
+    ));
+
     
     
     
@@ -1252,8 +1267,57 @@ function get_post_by_id(WP_REST_Request $request)
     return $response;
 }
 
+function get_huyen(WP_REST_Request $request)
+{
+  $tinh = $request->get_param('tinh');
 
+  
+    global $wpdb;
+    $arrayName = array();
+    $results  = $wpdb->get_results("SELECT * FROM abc WHERE Province = '$tinh'", OBJECT);
+    foreach ($results as $key => $value) {
+      if ( !in_array($value->Amphoe, $arrayName)){
+        $arrayName[$key] = $value->Amphoe;
+      }
+    }
+    $response = new WP_REST_Response($arrayName);
+    $response->set_status(200);
+    return $response;
+  }
 
+function get_xa(WP_REST_Request $request)
+{
+  $huyen = $request->get_param('huyen');
 
+  
+    global $wpdb;
+    $arrayName = array();
+    $results  = $wpdb->get_results("SELECT * FROM abc WHERE Amphoe = '$huyen'", OBJECT);
+    foreach ($results as $key => $value) {
+      if ( !in_array($value->Address, $arrayName)){
+        $arrayName[$key] = $value->Address;
+      }
+    }
+    $response = new WP_REST_Response($arrayName);
+    $response->set_status(200);
+    return $response;
+  }
 
+function get_zipcode(WP_REST_Request $request)
+{
+   $xa = $request->get_param('xa');
+
+  
+    global $wpdb;
+    $arrayName = array();
+    $results  = $wpdb->get_results("SELECT * FROM abc WHERE Address = '$xa'", OBJECT);
+    foreach ($results as $key => $value) {
+      if ( !in_array($value->Zipcode, $arrayName)){
+        $arrayName[$key] = $value->Zipcode;
+      }
+    }
+    $response = new WP_REST_Response($arrayName);
+    $response->set_status(200);
+    return $response;
+}
 ?>
